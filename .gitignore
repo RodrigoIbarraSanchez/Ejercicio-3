@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript">
+
+			var watchID = null;
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			function onDeviceReady(){
+				startWatch();
+
+			}
+
+			function starWatch(){
+				var options = {frequency: 1000};
+				watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+			}
+
+			function onSuccess(aceleration){
+				var elemento = document.getElementById("mipanel");
+				elemento.innerHTML += "X: " + acceleraton.x + "<br/>" +
+									"Y: " + acceleraton.x + "<br/>" +
+									"Z: " + acceleraton.x + "<br/>" ;
+			}
+
+			function onError(){
+				alert("Ups! Hubo un error")
+			}
+
+			function playBeep(){
+				navigator.notification.beep(6);
+			}
+
+			function vibrate(){
+				navigator.notification.vibrate(6000);
+			}
+
+			function showalert(){
+				navigator.notification.alert("hola", "k ase", "q pedo");
+			}
+
+		</script>
+	</head>
+	<body>
+
+		<div data-role="page" data-theme="b" id="pagina1">
+			<div data-role="header">
+				<h1>Mi primer Web Mobile</h1>
+			</div>
+			<div data-role="content">
+				<p>Minions ipsum tulaliloo butt baboiii chasy bee do bee do bee do bee do bee do bee do hana dul sae la bodaaa hana dul sae ti aamoo! Tank yuuu! jeje para tú poopayee poopayee me want bananaaa! Jiji. Hahaha po kass baboiii bappleees baboiii wiiiii underweaaar uuuhhh po kass hahaha. Poopayee para tú la bodaaa bappleees. Ti aamoo! me want bananaaa! Poulet tikka masala poopayee uuuhhh pepete gelatooo hahaha daa bananaaaa. Poulet tikka masala para tú baboiii jiji belloo! Chasy. Jeje jeje daa tatata bala tu daa underweaaar daa. Wiiiii bappleees belloo! Baboiii butt tatata bala tu.</p>
+				<a href="#pagina2" data-role="button">Ir a Pagina 2</a>
+			</div>
+
+			<div data-role="collapsible-set">
+				<div data-role="collapsible">
+					<h2>Peliculas de terror</h2>
+					<h3>Zombies</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				</div>
+				<div data-role="collapsible">
+					<h2>Peliculas de comedia</h2>
+					<h3>Tu mama</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				</div>
+				<div data-role="collapsible">
+					<h2>Peliculas de sexo</h2>
+					<h3>XXX</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				</div>
+			</div>
+
+			<div data-role="footer">
+				<h4>Copyright 2013 by Valerio</h4>
+			</div>
+		</div>
+
+		<div data-role="page" data-theme="b" id="pagina2" data-add-back-btn="true">
+			<div data-role="header">
+				<h1>Mi primer Web Mobile 2</h1>
+			</div>
+			<div data-role="content">
+				<p>Minions ipsum tulaliloo butt baboiii chasy bee do bee do bee do bee do bee do bee do hana dul sae la bodaaa hana dul sae ti aamoo! Tank yuuu! jeje para tú poopayee poopayee me want bananaaa! Jiji. Hahaha po kass baboiii bappleees baboiii wiiiii underweaaar uuuhhh po kass hahaha. Poopayee para tú la bodaaa bappleees. Ti aamoo! me want bananaaa! Poulet tikka masala poopayee uuuhhh pepete gelatooo hahaha daa bananaaaa. Poulet tikka masala para tú baboiii jiji belloo! Chasy. Jeje jeje daa tatata bala tu daa underweaaar daa. Wiiiii bappleees belloo! Baboiii butt tatata bala tu.</p>
+				<a href="#" data-role="button" onclick="vibrate();">Vibra ahora papi</a>
+				<a href="#" data-role="button" onclick="playBeep();">Beeep Beeep</a>
+				<a href="#" data-role="button" onclick="showalert();">Saludame</a>
+				<a href="#mipanel" data-role="button" data-icon="bars">Abre panel</a>
+			</div>
+
+			<div data-role="panel" id="mipanel">
+				<div class="panel-content">
+					<h3>Este es mi panel desplegado</h3>
+					<p>Minions ipsum tulaliloo butt baboiii chasy bee do bee do bee do bee do bee do bee do hana dul sae la bodaaa hana dul sae ti aamoo! Tank yuuu! jeje para tú poopayee poopayee me want bananaaa! Jiji. Hahaha po kass baboiii bappleees baboiii wiiiii underweaaar uuuhhh po kass hahaha. </p>
+					<a href="#" data-rel="close" data-role="button" data-icon="delete">Cierra panel</a>
+				</div>
+			</div>
+
+			<div data-role="footer">
+				<h4>Copyright 2013 by Valerio</h4>
+			</div>
+		</div>
+
+	</body>
+</html>
